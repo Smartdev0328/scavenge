@@ -5,11 +5,13 @@ import { SigningStargateClient } from "@cosmjs/stargate";
 import { Registry, OfflineSigner, EncodeObject, DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { Api } from "./rest";
 import { MsgSubmitScavenge } from "./types/scavenge/tx";
+import { MsgRevealSolution } from "./types/scavenge/tx";
 import { MsgCommitSolution } from "./types/scavenge/tx";
 
 
 const types = [
   ["/scavenge.scavenge.MsgSubmitScavenge", MsgSubmitScavenge],
+  ["/scavenge.scavenge.MsgRevealSolution", MsgRevealSolution],
   ["/scavenge.scavenge.MsgCommitSolution", MsgCommitSolution],
   
 ];
@@ -44,6 +46,7 @@ const txClient = async (wallet: OfflineSigner, { addr: addr }: TxClientOptions =
   return {
     signAndBroadcast: (msgs: EncodeObject[], { fee, memo }: SignAndBroadcastOptions = {fee: defaultFee, memo: ""}) => client.signAndBroadcast(address, msgs, fee,memo),
     msgSubmitScavenge: (data: MsgSubmitScavenge): EncodeObject => ({ typeUrl: "/scavenge.scavenge.MsgSubmitScavenge", value: MsgSubmitScavenge.fromPartial( data ) }),
+    msgRevealSolution: (data: MsgRevealSolution): EncodeObject => ({ typeUrl: "/scavenge.scavenge.MsgRevealSolution", value: MsgRevealSolution.fromPartial( data ) }),
     msgCommitSolution: (data: MsgCommitSolution): EncodeObject => ({ typeUrl: "/scavenge.scavenge.MsgCommitSolution", value: MsgCommitSolution.fromPartial( data ) }),
     
   };
