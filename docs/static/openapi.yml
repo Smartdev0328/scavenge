@@ -51552,6 +51552,10 @@ definitions:
     description: |-
       Version defines the versioning scheme used to negotiate the IBC verison in
       the connection handshake.
+  scavenge.scavenge.MsgCommitSolutionResponse:
+    type: object
+  scavenge.scavenge.MsgSubmitScavengeResponse:
+    type: object
   scavenge.scavenge.Params:
     type: object
     description: Params defines the parameters for the module.

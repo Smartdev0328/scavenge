@@ -7,7 +7,28 @@ option go_package = "scavenge/x/scavenge/types";
 
 // Msg defines the Msg service.
 service Msg {
-    // this line is used by starport scaffolding # proto/tx/rpc
+      rpc SubmitScavenge(MsgSubmitScavenge) returns (MsgSubmitScavengeResponse);
+  rpc CommitSolution(MsgCommitSolution) returns (MsgCommitSolutionResponse);
+// this line is used by starport scaffolding # proto/tx/rpc
+}
+
+message MsgSubmitScavenge {
+  string creator = 1;
+  string solutionHash = 2;
+  string description = 3;
+  string reward = 4;
+}
+
+message MsgSubmitScavengeResponse {
+}
+
+message MsgCommitSolution {
+  string creator = 1;
+  string solutionHash = 2;
+  string solutionScavengerHash = 3;
+}
+
+message MsgCommitSolutionResponse {
 }
 
 // this line is used by starport scaffolding # proto/tx/message
