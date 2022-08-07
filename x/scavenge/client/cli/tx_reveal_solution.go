@@ -1,8 +1,6 @@
 package cli
 
 import (
-	"strconv"
-
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/cosmos/cosmos-sdk/client/tx"
@@ -10,7 +8,6 @@ import (
 	"scavenge/x/scavenge/types"
 )
 
-var _ = strconv.Itoa(0)
 
 func CmdRevealSolution() *cobra.Command {
 	cmd := &cobra.Command{
